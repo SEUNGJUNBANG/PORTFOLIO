@@ -13,23 +13,35 @@
     <script>
         window.onload = () => {
             gsap.registerPlugin(SplitText);
-
             document.fonts.ready.then(() => {
-                gsap.set("h1", { opacity: 1 });
+                const elements = document.querySelectorAll("h1, h2");
 
-                const headlineSplit = SplitText.create("h1", {
-                    type: "words",
-                    wordsClass: "list++",
-                    ignore: "sup"
-                });
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const el = entry.target;
 
-                gsap.from(headlineSplit.words, {
-                    y: -800,
-                    opacity: 0,
-                    rotation: "random(-80, 80)",
-                    stagger: 0.1,
-                    duration: 2,
-                    ease: "back"
+                            const split = SplitText.create(el, {
+                                type: "words",
+                                wordsClass: "list++",
+                                ignore: "sup"
+                            });
+
+                            gsap.from(split.words, {
+                                y: -800,
+                                opacity: 0,
+                                rotation: "random(-80, 80)",
+                                stagger: 0.1,
+                                duration: 2,
+                                ease: "back"
+                            });
+                            observer.unobserve(el);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                elements.forEach(el => {
+                    gsap.set(el, { opacity: 1 });
+                    observer.observe(el);
                 });
             });
             var swiper = new Swiper(".mySwiper", {
