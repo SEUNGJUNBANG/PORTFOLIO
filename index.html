@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEUNGJUN's-PORTFOLIO</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="lib/gsap.min.js"></script>
+    <script src="lib/SplitText.min.js"></script>
+    <script>
+        window.onload = () => {
+            gsap.registerPlugin(SplitText);
+
+            document.fonts.ready.then(() => {
+                gsap.set("h1", { opacity: 1 });
+
+                const headlineSplit = SplitText.create("h1", {
+                    type: "words",
+                    wordsClass: "list++",
+                    ignore: "sup"
+                });
+
+                gsap.from(headlineSplit.words, {
+                    y: -800,
+                    opacity: 0,
+                    rotation: "random(-80, 80)",
+                    stagger: 0.1,
+                    duration: 2,
+                    ease: "back"
+                });
+            });
+            var swiper = new Swiper(".mySwiper", {
+                direction: "vertical",
+                slidesPerView: 1,
+                spaceBetween: 30,
+                mousewheel: true,
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+            });
+            var subswiper = new Swiper(".subSwiper", {
+                slidesPerView: 2.5,
+                spaceBetween: 30,
+                pagination: {
+                    el: ".swiper-pagination",
+                    dynamicBullets: true
+                },
+            });
+            var mainswiper = new Swiper(".mainSwiper", {
+                slidesPerView: 2.3,
+                spaceBetween: 30,
+                pagination: {
+                    el: ".swiper-pagination",
+                    dynamicBullets: true
+                },
+            });
+            const buttons = document.querySelectorAll('.moreButton');
+            buttons.forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const menu = btn.nextElementSibling;
+                    menu.classList.toggle('show');
+                });
+            });
+            document.addEventListener('click', (e) => {
+                document.querySelectorAll('.menu').forEach(menu => {
+                    if (!menu.contains(e.target) && !menu.previousElementSibling.contains(e.target)) {
+                        menu.classList.remove('show');
+                    }
+                });
+            });
+        };//script end
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+        <header class="header">
+            <div class="inner">
+                <div class="text_box">
+                    <div class="text">
+                        <p>Web-Design Portfolio</p>
+                    </div><!-- .text -->
+                    <div class="text">
+                        <p>BangSeungJun</p>
+                    </div><!-- .text -->
+                </div><!-- .text -->
+            </div><!-- .inner -->
+        </header><!-- .header -->
+
+        <main class="main">
+            <div class="text_box">
+                <div class="text">
+                    <h1>BangSeungJun</h1>
+                </div><!-- .text -->
+
+                <div class="text">
+                    <h1>PORTFOLIO</h1>
+                </div><!-- .text -->
+            </div><!-- .text_box -->
+
+            <div class="sub_text">
+                <div class="text">
+                    <p>안녕하세요. 실용성과 사용자 편의를 중심으로 생각하며 디자인하는 웹 디자이너/퍼블리셔 방승준입니다.</p>
+                    <p>창의적인 디자인과 기능적인 UI/UX 구현을 위해 꾸준히 배우고, 실제로 다양한 작업을 통해 직접 경험을 쌓고 있습니다.</p>
+                    <p>앞으로도 사용자의 입장에서 생각하고, 더 나은 웹 디자인을 만들기 위해 끊임없이 성장해 나가겠습니다.</p>
+                </div><!-- .text -->
+            </div><!-- .sub_text -->
+        </main><!-- .main -->
+
+        <div class="profile">
+            <div class="title">
+                <h2>PROFILE</h2>
+            </div><!-- .title -->
+
+            <div class="box">
+                <div class="image_box">
+                    <div class="image">
+                        <img src="img/IMG_4693.jpeg" alt="증명사진">
+                    </div><!-- .image -->
+                </div><!-- .image_box -->
+                <div class="ex">
+                    <div class="name">
+                        <p>방승준</p>
+                        <span>2000.08.24</span>
+                    </div><!-- .name -->
+                    <div class="number">
+                        <strong>number</strong>
+                        <p>+82 010.5479.0846</p>
+                    </div><!-- .number -->
+                    <div class="email">
+                        <strong>email</strong>
+                        <p>eoakd159@naver.com</p>
+                    </div><!-- .email -->
+                    <div class="education">
+                        <strong>education</strong>
+                        <p>2019.03 ~ 2024.12 동서대학교 컴퓨터공학과(휴학)</p>
+                        <P>2025.01 ~ 2025.06 [디지털디자인] UI/UX 반응형 웹 퍼블리셔 프론트엔드A (그린컴퓨터 아카데미)</P>
+                    </div><!-- .education -->
+
+                    <div class="skill">
+                        <div class="image_box">
+                            <div class="image">
+                                <img src="img/skill_html.png" alt="html">
+                                <p>HTML</p>
+                            </div><!-- .image -->
+
+                            <div class="image">
+                                <img src="img/skill_css.png" alt="css">
+                                <p>CSS</p>
+                            </div><!-- .image -->
+
+                            <div class="image">
+                                <img src="img/skill_jquery.png" alt="jQuery">
+                                <p>jQuery</p>
+                            </div><!-- .image -->
+
+                            <div class="image">
+                                <img src="img/skill_js.png" alt="javascript">
+                                <p>JavaScript</p>
+                            </div><!-- .image -->
+
+                            <div class="image">
+                                <img src="img/skill_vs.png" alt="visualstudio">
+                                <p>VisualStudio</p>
+                            </div><!-- .image -->
+
+                            <div class="image">
+                                <img src="img/skill_figma.png" alt="figma">
+                                <p>Figma</p>
+                            </div><!-- .image -->
+
+                            <div class="image">
+                                <img src="img/skill_ai.png" alt="AdobeIllustrator">
+                                <p>AdobeIllustrator</p>
+                            </div><!-- .image -->
+
+                            <div class="image">
+                                <img src="img/skill_ps.png" alt="AdobePhotoshop">
+                                <p>AdobePhotoshop</p>
+                            </div><!-- .image -->
+                        </div><!-- .image_box -->
+                    </div><!-- .skill -->
+                </div><!-- .ex -->
+
+            </div><!-- .box -->
+        </div><!-- .profile -->
+
+        <div class="project">
+            <div class="title">
+                <h2>PROJECT</h2>
+            </div><!-- .title -->
+
+            <!-- Swiper -->
+            <div class="swiper subswiper subSwiper">
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide">
+                        <div class="image">
+                            <img src="img/매스티나.png" alt="매스티나">
+                        </div><!-- .image -->
+                        <div class="text_box">
+                            <div class="title">
+                                <h3>매스티나(모작)</h3>
+                                <p><a href="https://mastina.co.kr/?srsltid=AfmBOoqAmFYJP2x-byhH4hlz1ACR3GK1Y7F7mpQNJBNJ_ovd4QYRGJEC">mastina.co.kr</a></p>
+                            </div><!-- .title -->
+                            <div class="text">
+                                <p>기존의 화장품 사이트인 ‘매스티나’의 메인페이지를 모작했습니다.</p>
+                                <p>TOOLS : HTML/CSS </p>
+                                <p>기여도 : 디자인, 코딩 100%</p>
+                                <a href="https://seungjunbang.github.io/mastina/"><button>Web</button></a>
+                            </div><!-- .text -->
+                        </div><!-- .text -->
+                    </div><!-- .swiper-slide -->
+
+                    <div class="swiper-slide">
+                        <div class="image">
+                            <img src="img/여행이지.png" alt="여행이지">
+                        </div><!-- .image -->
+                        <div class="text_box">
+                            <div class="title">
+                                <h3>교원투어-여행이지(모작)</h3>
+                                <p><a href="https://www.kyowontour.com/">kyowontour.com/</a></p>
+                            </div><!-- .title -->
+                            <div class="text">
+                                <p>기존의 여행 사이트인 '여행이지'의 페이지를 모작했습니다.</p>
+                                <p>TOOLS : HTML/CSS </p>
+                                <p>기여도 : 기획, 디자인, 코딩 100%</p>
+                                <a href="https://seungjunbang.github.io/trip/#"><button>Web</button></a>
+                            </div><!-- .text -->
+                        </div><!-- .text -->
+                    </div><!-- .swiper-slide -->
+
+                    <div class="swiper-slide">
+                        <div class="image">
+                            <img src="img/로보토리.png" alt="로보토리에듀">
+                        </div><!-- .image -->
+                        <div class="text_box">
+                            <div class="title">
+                                <h3>로보토리에듀(모작)</h3>
+                                <p><a href="https://robotoriedu.com/kor/asp/main/">robotoriedu.com</a></p>
+                            </div><!-- .title -->
+                            <div class="text">
+                                <p>기존의 교육 사이트인 '로보토리 에듀'의 메인페이지를 모작했습니다.</p>
+                                <p>TOOLS : HTML/CSS </p>
+                                <p>기여도 : 디자인, 코딩 100%</p>
+                                <a href="https://seungjunbang.github.io/robotori-edu/"><button>Web</button></a>
+
+                            </div><!-- .text -->
+                        </div><!-- .text -->
+                    </div><!-- .swiper-slide -->
+
+                    <div class="swiper-slide">
+                        <div class="image">
+                            <img src="img/코드스테이츠.png" alt="코드스테이츠">
+                        </div><!-- .image -->
+                        <div class="text_box">
+                            <div class="title">
+                                <h3>코드스테이츠(모작)</h3>
+                                <p><a href="https://www.codestates.com/">codestates.com/</a></p>
+                            </div><!-- .title -->
+                            <div class="text">
+                                <p>기존의 교육 사이트인 '코드스테이츠' 메인페이지를 모작했습니다.</p>
+                                <p>TOOLS : HTML/CSS </p>
+                                <p>기여도 : 디자인, 코딩 100%</p>
+                                <a href="https://seungjunbang.github.io/codestates/"><button>Web</button></a>
+                            </div><!-- .text -->
+                        </div><!-- .text -->
+                    </div><!-- .swiper-slide -->
+
+                    <div class="swiper-slide">
+                        <div class="image">
+                            <img src="img/즐거운.png" alt="즐거운">
+                        </div><!-- .image -->
+                        <div class="text_box">
+                            <div class="title">
+                                <h3>즐거운(모작)</h3>
+                                <p><a href="https://www.zlgoon.co.kr/">zlgoon.co.kr/</a></p>
+                            </div><!-- .title -->
+                            <div class="text">
+                                <p>기존의 모바일 쿠폰 사이트 '즐거운' 메인페이지를 모작했습니다.</p>
+                                <p>TOOLS : HTML/CSS </p>
+                                <p>기여도 : 디자인, 코딩 100%</p>
+                                <a href="https://seungjunbang.github.io/funny/"><button>Web</button></a>
+                            </div><!-- .text -->
+                        </div><!-- .text -->
+                    </div><!-- .swiper-slide -->
+                </div><!-- .swiper-wrapper -->
+            </div><!-- subSwiper -->
+
+
+            <!-- Swiper -->
+            <div class="swiper mainswiper mainSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="image">
+                            <img src="img/롯데.png" alt="롯데자이언츠">
+                        </div><!-- .image -->
+                        <div class="text_box">
+                            <div class="title">
+                                <h3>롯데자이언츠 앱(리뉴얼)</h3>
+                                <p><a href="https://www.giantsclub.com/html/">giantsclub.com</a></p>
+                            </div><!-- .title -->
+                            <div class="text">
+                                <p>기존의 야구 사이트인 '롯데자이언츠' 앱을 리뉴얼했습니다.</p>
+                                <p>야구앱의 핵심인 경기예매티켓, 굿즈등이 잘 보이지않아 리디자인했습니다.</p>
+                                <p>TOOLS : FIGMA </p>
+                                <p>기여도 : 기획, 디자인 100%</p>
+                                <a
+                                    href="https://www.figma.com/proto/s5s4IZy0kkM1mYtTUHMsnJ/%EC%A0%9C%EC%B6%9C%EB%B3%B8-%EB%A1%AF%EB%8D%B0%EC%9E%90%EC%9D%B4%EC%96%B8%EC%B8%A0?node-id=2005-473&p=f&t=kq1sWk00PP3jZIxM-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1"><button>FIGMA</button></a>
+
+                                <div class="more-container">
+                                    <button class="moreButton">더보기</button>
+                                    <div class="menu">
+                                        <ul>
+                                            <li><a href="search.pdf" target="_blank">관찰조사</a></li>
+                                            <li><a href="development.pdf" target="_blank">시나리오</a></li>
+                                            <li><a href="ui.pdf" target="_blank">UI</a></li>
+                                            <li><a href="ux.pdf" target="_blank">UX</a></li>
+                                        </ul>
+                                    </div><!-- .menu -->
+                                </div><!-- .more-container -->
+
+                            </div><!-- .text -->
+                        </div><!-- .text -->
+                    </div><!-- .swiper-slide -->
+
+                    <div class="swiper-slide">
+                        <div class="image">
+                            <img src="img/번장.png" alt="번개장터">
+                        </div><!-- .image -->
+                        <div class="text_box">
+                            <div class="title">
+                                <h3>번개장터(리뉴얼)</h3>
+                                <p><a href="https://m.bunjang.co.kr/">bunjang.co.kr</a></p>
+                            </div><!-- .title -->
+                            <div class="text">
+                                <p>기존의 중고거래 사이트인 '번개장터'의 메인페이지를 리뉴얼했습니다.</p>
+                                <p>아이템들이 많아 푸터부분의 정보를 보는데 오래걸려, 아이템들을 정리하고 동적요소들을 추가했습니다.</p>
+                                <p>TOOLS : HTML/CSS/FIGMA </p>
+                                <p>기여도 : 기획, 디자인, 코딩 100%</p>
+                                <a href="https://seungjunbang.github.io/BunJang/#"><button>Web</button></a>
+                                <a
+                                    href="https://www.figma.com/proto/3S2bXY7Ju9p5fOrsHXByu9/Untitled?node-id=3-13087&t=pZJLERmBACQ9weOl-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=3%3A13087&hide-ui=1"><button>FIGMA</button></a>
+                                <div class="more-container">
+                                    <button class="moreButton">더보기</button>
+                                    <div class="menu">
+                                        <ul>
+                                            <li><a href="desgin.pdf" target="_blank">사용자리서치</a></li>
+                                            <li><a href="research.pdf" target="_blank">리디자인</a></li>
+                                        </ul>
+                                    </div><!-- .menu -->
+                                </div><!-- .more-container -->
+
+                            </div><!-- .text -->
+                        </div><!-- .text_box -->
+                    </div><!-- swiper-slide -->
+
+                    <div class="swiper-slide">
+                        <div class="image">
+                            <img src="img/베라 (2).png" alt="베스킨라빈스">
+                        </div><!-- .image -->
+                        <div class="text_box">
+                            <div class="title">
+                                <h3>배스킨라빈스(리뉴얼)</h3>
+                                <p><a href="https://www.baskinrobbins.co.kr/">baskinrobbins.co.kr</a></p>
+                            </div><!-- .title -->
+                            <div class="text">
+                                <p>기존의 아이스크림 사이트인 '베스킨라빈스'의 메인페이지를 리뉴얼했습니다.</p>
+                                <p>기존 페이지의 가독성이 떨어지는 글자 색상과, 작은 글꼴들 잘 보이지 않는 아이템들을 개선했습니다.</p>
+                                <p>TOOLS : HTML/CSS </p>
+                                <p>기여도 : 기획, 디자인, 코딩 100%</p>
+                                <a href="https://seungjunbang.github.io/BRremake/"><button>Web</button></a>
+                    
+                                <div class="more-container">
+                                    <button class="moreButton">더보기</button>
+                                    <div class="menu">
+                                        <ul>
+                                            <li><a href="br-srch.pdf" target="_blank">조사</a></li>
+                                            <li><a href="br-analyze.pdf" target="_blank">분석</a></li>
+                                            <li><a href="br-concept.pdf" target="_blank">구상</a></li>
+                                        </ul>
+                                    </div><!-- .menu -->
+                                </div><!-- .more-container -->
+
+                            </div><!-- .text -->
+                        </div><!-- .text -->
+                    </div><!-- .swiper-slide -->
+
+                    <div class="swiper-slide">
+                        <div class="image">
+                            <img src="img/멜론.png" alt="멜론">
+                        </div><!-- .image -->
+                        <div class="text_box">
+                            <div class="title">
+                                <h3>멜론(리뉴얼)</h3>
+                                <p><a href="https://www.melon.com/">melon.com</a></p>
+                            </div><!-- .title -->
+                            <div class="text">
+                                <p>기존의 음악 사이트인 '멜론' 홈페이지를 리뉴얼했습니다.</p>
+                                <p>오래된 디자인들을 (애플뮤직,스포티)등을 참고해 최신 디자인들로 리디자인했습니다.</p>
+                                <p>TOOLS : HTML/CSS/JS/FIGMA </p>
+                                <p>기여도 : 기획, 디자인, 코딩 100%</p>
+                                <a
+                                    href="https://www.figma.com/proto/MJ03ax04TWRekZ0xNxyw42/%EB%A9%9C%EB%A1%A0?node-id=57-152&t=kq1sWk00PP3jZIxM-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=11%3A31&hide-ui=1"><button>FIGMA(데스크톱)</button></a>
+                                <a
+                                    href="https://www.figma.com/proto/MJ03ax04TWRekZ0xNxyw42/%EB%A9%9C%EB%A1%A0?node-id=11-31&t=kq1sWk00PP3jZIxM-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=11%3A31&hide-ui=1"><button>FIGMA(태블릿)</button></a>
+                                <a
+                                    href="https://www.figma.com/proto/MJ03ax04TWRekZ0xNxyw42/%EB%A9%9C%EB%A1%A0?node-id=60-266&t=kq1sWk00PP3jZIxM-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=11%3A31&hide-ui=1"><button>FIGMA(모바일)</button></a>
+                                <a href="https://seungjunbang.github.io/melin/"><button>Web</button></a>
+                                
+                                <div class="more-container">
+                                    <button class="moreButton">더보기</button>
+                                    <div class="menu">
+                                        <ul>
+                                            <li><a href="melon.pdf" target="_blank">설계</a></li>
+                                        </ul>
+                                    </div><!-- .menu -->
+                                </div><!-- .more-container -->
+
+                            </div><!-- .text -->
+                        </div><!-- .text -->
+                    </div><!-- .swiper-slide -->
+
+                    <div class="swiper-slide">
+                        <div class="image">
+                            <img src="img/국립.png" alt="국립국어원">
+                        </div><!-- .image -->
+                        <div class="text_box">
+                            <div class="title">
+                                <h3>국립국어원(리뉴얼)</h3>
+                                <p><a href="https://www.korean.go.kr/">korean.go.kr</a></p>
+                            </div><!-- .title -->
+                            <div class="text">
+                                <p>기존의 사이트인 '국립국어원' 홈페이지를 리뉴얼했습니다.</p>
+                                <p>국가 사이트인 만큼, 여러 연령층을 위해 글자크기를 키우고 아이템들의 크기를 키웠습니다.</p>
+                                <p>TOOLS : FIGMA </p>
+                                <p>기여도 : 기획, 디자인 100%</p>
+                                <a href="https://www.figma.com/proto/trK8ZhSsgGOr5VImEVI7Et/%EA%B5%AD%EB%A6%BD%EA%B5%AD%EC%96%B4%EC%9B%90?node-id=25-85&t=hcoeX91a84BljeeL-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1"><button>FIGMA</button></a>
+
+                                <div class="more-container">
+                                    <button class="moreButton">더보기</button>
+                                    <div class="menu">
+                                        <ul>
+                                            <li><a href="hg-design.pdf" target="_blank">설계</a></li>
+                                            <li><a href="hg-production.pdf" target="_blank">제작</a></li>
+                                            <li><a href="hj-subpage.pdf" target="_blank">서브페이지</a></li>
+                                        </ul>
+                                    </div><!-- .menu -->
+                                </div><!-- .more-container -->
+
+                            </div><!-- .text -->
+                        </div><!-- .text -->
+                    </div><!-- .swiper-slide -->
+                </div><!-- .swiper-wrapper -->
+
+            </div><!-- mainSwiper -->
+        </div><!-- .project -->
+
+        <div class="footer">
+            <div class="inner">
+                <div class="text_box">
+                    <div class="text">
+                        <p>82+ 010.5479.0846</p>
+                        <span>eoakd159@naver.com</span>
+                    </div><!-- .text -->
+                    <div class="text">
+                        <p>@SEUNGJUN.com</p>
+                        <span>BangSeungJun</span>
+                    </div><!-- .text -->
+                </div><!-- .text_box -->
+            </div><!-- .inner -->
+        </div><!-- .footer -->
+    </div><!-- .wrap -->
+</body>
+
+</html>
