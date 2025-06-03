@@ -19,6 +19,20 @@ body {
   font-family: 'Pretendard';
 }
 
+
+
+#progressBar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(to right, #e2e6be, #717185);
+  width: 0%;
+  z-index: 9999;
+}
+
+
+
 .header {
   position: fixed;
   top: 0;
@@ -28,17 +42,15 @@ body {
   background: #f5f5f5;
   height: 60px;
   border-bottom: 1px solid rgba(102, 102, 102, 0.3);
-
-}
-
-.header .inner {
-  height: 100%;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: f5f5f5;
 }
 
 .header .text_box {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-align: center;
   height: 100%;
   padding: 0 30px;
 }
@@ -125,7 +137,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 60px;
+  gap: 200px;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -136,11 +148,10 @@ body {
 }
 
 .profile .image_box .image img {
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  height: 500px;
   object-fit: cover;
-  border-radius: 50%;
-  border: 1px solid #333;
+  border-radius: 20px;
 }
 
 .profile .ex {
@@ -189,18 +200,17 @@ body {
 }
 
 .profile .skill .image_box .image p {
-  font-size: 14px;
+  font-size: 16px;
   color: #555;
 }
 
 
 .project {
   background: url('../img/배경3.jpg') center center / cover no-repeat;
+  background-color: #fff;
+  padding-bottom: 150px;
 }
 
-.project {
-  background-color: #fff;
-}
 
 .project .title h2 {
   font-size: 36px;
@@ -208,6 +218,10 @@ body {
   text-align: center;
   padding: 60px 0;
   color: #222;
+}
+
+.swiper {
+  height: 900px;
 }
 
 .subswiper {
@@ -239,7 +253,7 @@ body {
   height: 500px;
   overflow: hidden;
   border-radius: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
 }
 
 .swiper-slide .image img {
@@ -262,6 +276,30 @@ body {
   object-fit: contain;
 }
 
+.subswiper {
+  margin-top: 30px;
+  margin-bottom: 150px;
+}
+
+.swiper-pagination-bullet {
+  width: 25px !important;
+  height: 25px !important;
+  background: none !important;
+  border: 2px solid #999 !important;
+  color: #999 !important;
+  font-size: 14px !important;
+  line-height: 21px !important;
+  text-align: center !important;
+  border-radius: 50% !important;
+  transition: all 0.3s ease !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #2b4ff1 !important;
+  border-color: #fff !important;
+  color: rgb(255, 255, 255) !important;
+}
+
 .text_box {
   width: 100%;
   text-align: left;
@@ -280,6 +318,10 @@ body {
   margin-bottom: 16px;
 }
 
+.text_box .text {
+  gap: 10px;
+}
+
 .text_box .text p {
   font-size: 14px;
   line-height: 1.6;
@@ -288,7 +330,8 @@ body {
 }
 
 .text_box .text a button {
-  margin-top: 15px;
+  height: 40px;
+  margin-top: 20px;
   padding: 10px 20px;
   background-color: #333;
   color: #fff;
@@ -296,6 +339,7 @@ body {
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  white-space: nowrap;
 }
 
 .text_box .text a button:hover {
@@ -303,6 +347,56 @@ body {
 }
 
 
+.more-container {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.moreButton {
+  height: 40px;
+  padding: 8px 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease
+}
+
+
+.menu {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  border-radius: 5px;
+  padding: 10px;
+  display: none;
+  z-index: 100;
+}
+
+.menu.show {
+  display: block;
+}
+
+.menu ul {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+}
+
+.menu li {
+  height: 100%;
+  white-space: nowrap;
+  font-size: 14px;
+  color: #fff;
+  font-weight: 500;
+  padding: 8px 10px;
+  border-radius: 5px;
+  background: #2b4ff1;
+  cursor: pointer;
+}
 
 .footer {
   padding-top: 50px;
@@ -344,51 +438,4 @@ body {
   font-weight: bold;
   color: #333;
   text-align: center;
-}
-
-.more-container {
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.menu {
-  position: absolute;
-  top: 50%;               
-  left: 100%;
-  transform: translateY(-50%);
-  border-radius: 5px;
-  padding: 10px;
-  display: none;
-  z-index: 100;
-}
-
-.menu.show {
-  display: block;
-}
-
-.menu ul {
-  display: flex;
-  gap: 10px;
-  list-style: none;
-}
-
-.menu li {
-  white-space: nowrap;
-  font-size: 14px;
-  color: #fff;
-  font-weight: 500;
-  padding: 8px 10px;
-  border-radius: 5px;
-  background: #2b4ff1;
-}
-
-.moreButton {
-  padding: 8px 10px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease
 }
