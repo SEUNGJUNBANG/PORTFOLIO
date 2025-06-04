@@ -11,6 +11,30 @@
     <script src="lib/gsap.min.js"></script>
     <script src="lib/SplitText.min.js"></script>
     <script>
+        function openImage(src, isCustom = false) {
+            const popup = document.getElementById('subImage');
+            const popupImg = document.getElementById('popupImg');
+
+            if (popup.style.display === 'block' && popupImg.src.includes(src)) {
+                popup.style.display = 'none';
+                popup.classList.remove('custom-popup');
+            } else {
+                popupImg.src = src;
+                popup.style.display = 'block';
+
+                if (isCustom) {
+                    popup.classList.add('custom-popup');
+                } else {
+                    popup.classList.remove('custom-popup');
+                }
+            }
+        }
+
+        function togglePopup() {
+            const popup = document.getElementById('subImage');
+            popup.style.display = 'none';
+            popup.classList.remove('custom-popup');
+        }
         window.onload = () => {
             gsap.registerPlugin(SplitText);
             document.fonts.ready.then(() => {
@@ -46,16 +70,6 @@
                     observer.observe(el);
                 });
             });
-            var swiper = new Swiper(".mySwiper", {
-                direction: "vertical",
-                slidesPerView: 1,
-                spaceBetween: 30,
-                mousewheel: true,
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
-            });
             var subswiper = new Swiper(".subSwiper", {
                 slidesPerView: 2.5,
                 spaceBetween: 30,
@@ -82,7 +96,19 @@
                     dynamicBullets: true
                 },
             });
-
+            var swiper = new Swiper(".psSwiper", {
+                slidesPerView: 2.5,
+                spaceBetween: 30,
+                pagination: {
+                    el: ".swiper-pagination",
+                    el: '.swiper-pagination',
+                    clickable: true,
+                    renderBullet: function (index, className) {
+                        return `<span class="${className}">${index + 1}</span>`;
+                    },
+                    dynamicBullets: true
+                },
+            });
             const buttons = document.querySelectorAll('.moreButton');
             buttons.forEach((btn) => {
                 btn.addEventListener('click', () => {
@@ -483,6 +509,167 @@
                 <div class="swiper-pagination"></div>
             </div><!-- mainSwiper -->
         </div><!-- .project -->
+
+
+        <div class="ps">
+            <div class="title">
+                <h2>Photoshop</h2>
+            </div><!-- .title -->
+            <div class="swiper psSwiper psSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="image">
+                            <img src="img/ps/고디바.jpg" alt="고디바">
+                        </div><!-- .image -->
+                        <div class="text_box">
+                            <div class="title">
+                                <h3>고디바</h3>
+                            </div><!-- .title -->
+                            <div class="text">
+                                <p>TOOLS : AdobePhotoshop </p>
+                                <p>기여도 : 기획,디자인100%</p>
+                                <button onclick="openImage('img/ps/고디바원본.jpg')">원본</button>
+                            </div><!-- .text -->
+                        </div><!-- .text -->
+                    </div><!-- .swiper-slide -->
+
+                    <div class="swiper-slide">
+                        <div class="image">
+                            <img src="img/ps/밀리.gif" alt="밀리">
+                        </div><!-- .image -->
+                        <div class="text_box">
+                            <div class="title">
+                                <h3>밀리의서재</h3>
+                            </div><!-- .title -->
+                            <div class="text">
+                                <p>TOOLS : AdobePhotoshop </p>
+                                <p>기여도 : 기획,디자인100%</p>
+                                <button onclick="openImage('img/ps/밀리의서재원본.jpg')">원본</button>
+                            </div><!-- .text -->
+
+                        </div><!-- .text -->
+                    </div><!-- .swiper-slide -->
+
+                    <div class="swiper-slide">
+                        <div class="image">
+                            <img src="img/ps/노랑풍선.gif" alt="노랑풍선">
+                        </div><!-- .image -->
+                        <div class="text_box">
+                            <div class="title">
+                                <h3>노랑풍선</h3>
+                            </div><!-- .title -->
+                            <div class="text">
+                                <p>TOOLS : AdobePhotoshop </p>
+                                <p>기여도 : 기획,디자인100%</p>
+                                <button onclick="openImage('img/ps/노랑풍선원본.gif')">원본</button>
+                            </div><!-- .text -->
+                        </div><!-- .text -->
+                    </div><!-- .swiper-slide -->
+
+                    <div class="swiper-slide">
+                        <div class="image">
+                            <img src="img/ps/무신사.jpg" alt="무신사">
+                        </div><!-- .image -->
+                        <div class="text_box">
+                            <div class="title">
+                                <h3>무신사</h3>
+                            </div><!-- .title -->
+                            <div class="text">
+                                <p>TOOLS : AdobePhotoshop </p>
+                                <p>기여도 : 기획,디자인100%</p>
+                                <button onclick="openImage('img/ps/무신사원본.jpg')">원본</button>
+                            </div><!-- .text -->
+                        </div><!-- .text -->
+                    </div><!-- .swiper-slide -->
+
+                    <div class="swiper-slide">
+                        <div class="image">
+                            <img src="img/ps/안국건강.jpg" alt="안국건강">
+                        </div><!-- .image -->
+                        <div class="text_box">
+                            <div class="title">
+                                <h3>안국건강</h3>
+                            </div><!-- .title -->
+                            <div class="text">
+                                <p>TOOLS : AdobePhotoshop </p>
+                                <p>기여도 : 기획,디자인100%</p>
+                                <button onclick="openImage('img/ps/안국건강원본.jpg')">원본</button>
+                            </div><!-- .text -->
+                        </div><!-- .text -->
+                    </div><!-- .swiper-slide -->
+
+                    <div class="swiper-slide">
+                        <div class="image">
+                            <img src="img/ps/플라스틱.jpg" alt="플라스틱">
+                        </div><!-- .image -->
+                        <div class="text_box">
+                            <div class="title">
+                                <h3>플라스틱 다이어트</h3>
+                            </div><!-- .title -->
+                            <div class="text">
+                                <p>TOOLS : AdobePhotoshop </p>
+                                <p>기여도 : 기획,디자인100%</p>
+                                <button onclick="openImage('img/ps/플라스틱원본.jpg', true)">원본</button>
+                            </div><!-- .text -->
+                        </div><!-- .text -->
+                    </div><!-- .swiper-slide -->
+
+                    <div class="swiper-slide">
+                        <div class="image">
+                            <img src="img/ps/멤버쉽.jpg" alt="멤버쉽">
+                        </div><!-- .image -->
+                        <div class="text_box">
+                            <div class="title">
+                                <h3>멤버쉽</h3>
+                            </div><!-- .title -->
+                            <div class="text">
+                                <p>TOOLS : AdobePhotoshop </p>
+                                <p>기여도 : 기획,디자인100%</p>
+                                <button onclick="openImage('img/ps/멤버쉽원본.jpg', true)">원본</button>
+                            </div><!-- .text -->
+                        </div><!-- .text -->
+                    </div><!-- .swiper-slide -->
+
+                    <div class="swiper-slide">
+                        <div class="image">
+                            <img src="img/ps/티트리.jpg" alt="티트리">
+                        </div><!-- .image -->
+                        <div class="text_box">
+                            <div class="title">
+                                <h3>티트리</h3>
+                            </div><!-- .title -->
+                            <div class="text">
+                                <p>TOOLS : AdobePhotoshop </p>
+                                <p>기여도 : 기획,디자인100%</p>
+                                <button onclick="openImage('img/ps/티트리원본.jpg', true)">원본</button>
+                            </div><!-- .text -->
+                        </div><!-- .text -->
+                    </div><!-- .swiper-slide -->
+
+                    <div class="swiper-slide">
+                        <div class="image">
+                            <img src="img/ps/신혼부부.gif" alt="신혼부부">
+                        </div><!-- .image -->
+                        <div class="text_box">
+                            <div class="title">
+                                <h3>이케아 베스트 아이템</h3>
+                            </div><!-- .title -->
+                            <div class="text">
+                                <p>TOOLS : AdobePhotoshop </p>
+                                <p>기여도 : 기획,디자인100%</p>
+                                <button onclick="openImage('img/ps/신혼부부원본.gif', true)">원본</button>
+                            </div><!-- .text -->
+                        </div><!-- .text -->
+                    </div><!-- .swiper-slide -->
+                </div><!-- .swiper-wrapper -->
+
+                <div class="swiper-pagination"></div>
+            </div><!-- .psSwiper -->
+
+            <div class="sub_image" id="subImage" onclick="togglePopup()">
+                <img id="popupImg" src="" alt="팝업 이미지">
+            </div><!-- .sub_image -->
+        </div><!-- .ps -->
 
         <div class="footer">
             <div class="inner">
