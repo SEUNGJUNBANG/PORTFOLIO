@@ -8,9 +8,45 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
     <script src="lib/gsap.min.js"></script>
     <script src="lib/SplitText.min.js"></script>
     <script>
+        window.addEventListener("load", () => {
+            const loading = document.getElementById("loading");
+            loading.classList.add("fade-out");
+
+            setTimeout(() => {
+                loading.style.display = "none";
+            }, 700);
+        });
+
+        document.querySelectorAll(".gnb a").forEach(link => {
+            link.addEventListener("click", e => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute("href"));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 60,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+        const sections = ["home", "profile", "project", "photoshop", "footer"];
+        window.addEventListener("scroll", () => {
+            const scrollPos = window.scrollY || window.pageYOffset;
+
+            sections.forEach(id => {
+                const sec = document.getElementById(id);
+                if (sec && scrollPos + 100 >= sec.offsetTop) {
+                    document.querySelectorAll(".gnb a").forEach(a => a.classList.remove("active"));
+                    const current = document.querySelector(`.gnb a[href=\"#${id}\"]`);
+                    if (current) current.classList.add("active");
+                }
+            });
+        });
+
         function openImage(src, isCustom = false) {
             const popup = document.getElementById('subImage');
             const popupImg = document.getElementById('popupImg');
@@ -29,7 +65,6 @@
                 }
             }
         }
-
         function togglePopup() {
             const popup = document.getElementById('subImage');
             popup.style.display = 'none';
@@ -71,8 +106,17 @@
                 });
             });
             var subswiper = new Swiper(".subSwiper", {
-                slidesPerView: 2.5,
+                slidesPerView: 3,
                 spaceBetween: 30,
+                loop: true,
+                speed: 800,
+                spaceBetween: 30,
+                centeredSlides: true,
+                grabCursor: true,
+                autoplay: {
+                    delay: 1000,
+                    disableOnInteraction: true,
+                },
                 pagination: {
                     el: ".swiper-pagination",
                     el: '.swiper-pagination',
@@ -84,10 +128,13 @@
                 },
             });
             var mainswiper = new Swiper(".mainSwiper", {
-                slidesPerView: 2.3,
-                spaceBetween: 30,
+                effect: 'fade',
+                loop: true,
+                autoplay: {
+                    delay: 2000,
+                    disableOnInteraction: false,
+                },
                 pagination: {
-                    el: ".swiper-pagination",
                     el: '.swiper-pagination',
                     clickable: true,
                     renderBullet: function (index, className) {
@@ -97,8 +144,14 @@
                 },
             });
             var swiper = new Swiper(".psSwiper", {
-                slidesPerView: 2.5,
+                slidesPerView: 2.8,
                 spaceBetween: 30,
+                centeredSlides: true,
+                grabCursor: true,
+                autoplay: {
+                    delay: 800,
+                    disableOnInteraction: true,
+                },
                 pagination: {
                     el: ".swiper-pagination",
                     el: '.swiper-pagination',
@@ -123,35 +176,40 @@
                     }
                 });
             });
-            window.addEventListener('scroll', () => {
-                const scrollTop = window.scrollY;
-                const docHeight = document.body.scrollHeight - window.innerHeight;
-                const scrollPercent = (scrollTop / docHeight) * 100;
-                document.getElementById('progressBar').style.width = scrollPercent + "%";
-            });
+
 
         };//script end
     </script>
 </head>
 
 <body>
-    <div id="wrap">
-        <div id="progressBar"></div>
 
+    <div id="loading">
+        <div class="ld_text">
+            <h5>SEUNGJUN'S PORTFOLIO</h5>
+        </div><!-- .ld_text -->
+    </div><!-- #loading -->
+
+    <div id="wrap">
         <header class="header">
             <div class="inner">
-                <div class="text_box">
-                    <div class="text">
-                        <p>Web-Design Portfolio</p>
-                    </div><!-- .text -->
-                    <div class="text">
-                        <p>BangSeungJun</p>
-                    </div><!-- .text -->
-                </div><!-- .text -->
+                <nav class="gnb">
+                    <ul>
+                        <li><a href="#home"><img src="아이콘/홈버튼.png" alt="홈버튼"></a></li>
+                        <li><a href="#profile">PROFILE</a></li>
+                        <li><a href="#project">PROJECT</a></li>
+                        <li><a href="#photoshop">PHOTOSHOP</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="https://github.com/SEUNGJUNBANG" target="_blank">Github</a></li>
+                        <li><a href="#footer">BangSeungJun</a></li>
+                    </ul>
+                </nav><!-- .gnb -->
             </div><!-- .inner -->
         </header><!-- .header -->
 
         <main class="main">
+            <div class="home" id="home"></div>
             <div class="text_box">
                 <div class="text">
                     <h1>BangSeungJun</h1>
@@ -172,6 +230,7 @@
         </main><!-- .main -->
 
         <div class="profile">
+            <div class="profile" id="profile"></div>
             <div class="title">
                 <h2>PROFILE</h2>
             </div><!-- .title -->
@@ -181,7 +240,23 @@
                     <div class="image">
                         <img src="img/IMG_4693.jpeg" alt="증명사진">
                     </div><!-- .image -->
+
+                    <div class="sub_image">
+                        <div class="text">
+                            <strong>MBTI : ISTP</strong>
+                        </div><!-- .text -->
+
+                        <div class="text">
+                            <strong>취미 : 야구관람⚾, 게임🏹, 풋살⚽</strong>
+                        </div><!-- .text -->
+
+                        <div class="text">
+                            <strong>성격 : 긍정적, 맡은일은 끝까지💪</strong>
+                        </div><!-- .text -->
+
+                    </div><!-- .sub_image -->
                 </div><!-- .image_box -->
+
                 <div class="ex">
                     <div class="name">
                         <p>방승준</p>
@@ -250,6 +325,7 @@
         </div><!-- .profile -->
 
         <div class="project">
+            <div class="project" id="project"></div>
             <div class="title">
                 <h2>PROJECT</h2>
             </div><!-- .title -->
@@ -341,6 +417,9 @@
             </div><!-- subSwiper -->
 
             <!-- Swiper -->
+            <div class="title">
+                <h2>Renewal Project</h2>
+            </div><!-- .title -->
             <div class="swiper mainswiper mainSwiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
@@ -512,6 +591,7 @@
 
 
         <div class="ps">
+            <div class="photoshop" id="photoshop"></div>
             <div class="title">
                 <h2>Photoshop</h2>
             </div><!-- .title -->
@@ -519,7 +599,7 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="image">
-                            <img src="ps/고디바.jpg" alt="고디바">
+                            <img src="img/ps/고디바.jpg" alt="고디바">
                         </div><!-- .image -->
                         <div class="text_box">
                             <div class="title">
@@ -528,14 +608,14 @@
                             <div class="text">
                                 <p>TOOLS : AdobePhotoshop </p>
                                 <p>기여도 : 기획,디자인100%</p>
-                                <button onclick="openImage('ps/고디바원본.jpg')">원본-작업물</button>
+                                <button onclick="openImage('img/ps/고디바원본.jpg')">원본-작업물</button>
                             </div><!-- .text -->
                         </div><!-- .text -->
                     </div><!-- .swiper-slide -->
 
                     <div class="swiper-slide">
                         <div class="image">
-                            <img src="ps/밀리.gif" alt="밀리">
+                            <img src="img/ps/밀리.gif" alt="밀리">
                         </div><!-- .image -->
                         <div class="text_box">
                             <div class="title">
@@ -544,7 +624,7 @@
                             <div class="text">
                                 <p>TOOLS : AdobePhotoshop </p>
                                 <p>기여도 : 기획,디자인100%</p>
-                                <button onclick="openImage('ps/밀리의서재원본.jpg')">원본-작업물</button>
+                                <button onclick="openImage('img/ps/밀리의서재원본.jpg')">원본-작업물</button>
                             </div><!-- .text -->
 
                         </div><!-- .text -->
@@ -552,7 +632,7 @@
 
                     <div class="swiper-slide">
                         <div class="image">
-                            <img src="ps/노랑풍선.gif" alt="노랑풍선">
+                            <img src="img/ps/노랑풍선.gif" alt="노랑풍선">
                         </div><!-- .image -->
                         <div class="text_box">
                             <div class="title">
@@ -561,14 +641,14 @@
                             <div class="text">
                                 <p>TOOLS : AdobePhotoshop </p>
                                 <p>기여도 : 기획,디자인100%</p>
-                                <button onclick="openImage('ps/노랑풍선원본.gif')">원본-작업물</button>
+                                <button onclick="openImage('img/ps/노랑풍선원본.gif')">원본-작업물</button>
                             </div><!-- .text -->
                         </div><!-- .text -->
                     </div><!-- .swiper-slide -->
 
                     <div class="swiper-slide">
                         <div class="image">
-                            <img src="ps/무신사.jpg" alt="무신사">
+                            <img src="img/ps/무신사.jpg" alt="무신사">
                         </div><!-- .image -->
                         <div class="text_box">
                             <div class="title">
@@ -577,14 +657,14 @@
                             <div class="text">
                                 <p>TOOLS : AdobePhotoshop </p>
                                 <p>기여도 : 기획,디자인100%</p>
-                                <button onclick="openImage('ps/무신사원본.jpg')">원본-작업물</button>
+                                <button onclick="openImage('img/ps/무신사원본.jpg')">원본-작업물</button>
                             </div><!-- .text -->
                         </div><!-- .text -->
                     </div><!-- .swiper-slide -->
 
                     <div class="swiper-slide">
                         <div class="image">
-                            <img src="ps/안국건강.jpg" alt="안국건강">
+                            <img src="img/ps/안국건강.jpg" alt="안국건강">
                         </div><!-- .image -->
                         <div class="text_box">
                             <div class="title">
@@ -593,14 +673,14 @@
                             <div class="text">
                                 <p>TOOLS : AdobePhotoshop </p>
                                 <p>기여도 : 기획,디자인100%</p>
-                                <button onclick="openImage('ps/안국건강원본.jpg')">원본-작업물</button>
+                                <button onclick="openImage('img/ps/안국건강원본.jpg')">원본-작업물</button>
                             </div><!-- .text -->
                         </div><!-- .text -->
                     </div><!-- .swiper-slide -->
 
                     <div class="swiper-slide">
                         <div class="image">
-                            <img src="ps/플라스틱.jpg" alt="플라스틱">
+                            <img src="img/ps/플라스틱.jpg" alt="플라스틱">
                         </div><!-- .image -->
                         <div class="text_box">
                             <div class="title">
@@ -609,14 +689,14 @@
                             <div class="text">
                                 <p>TOOLS : AdobePhotoshop </p>
                                 <p>기여도 : 기획,디자인100%</p>
-                                <button onclick="openImage('ps/플라스틱원본.jpg', true)">원본-작업물</button>
+                                <button onclick="openImage('img/ps/플라스틱원본.jpg', true)">원본-작업물</button>
                             </div><!-- .text -->
                         </div><!-- .text -->
                     </div><!-- .swiper-slide -->
 
                     <div class="swiper-slide">
                         <div class="image">
-                            <img src="ps/멤버쉽.jpg" alt="멤버쉽">
+                            <img src="img/ps/멤버쉽.jpg" alt="멤버쉽">
                         </div><!-- .image -->
                         <div class="text_box">
                             <div class="title">
@@ -625,14 +705,14 @@
                             <div class="text">
                                 <p>TOOLS : AdobePhotoshop </p>
                                 <p>기여도 : 기획,디자인100%</p>
-                                <button onclick="openImage('ps/멤버쉽원본.jpg', true)">원본-작업물</button>
+                                <button onclick="openImage('img/ps/멤버쉽원본.jpg', true)">원본-작업물</button>
                             </div><!-- .text -->
                         </div><!-- .text -->
                     </div><!-- .swiper-slide -->
 
                     <div class="swiper-slide">
                         <div class="image">
-                            <img src="ps/티트리.jpg" alt="티트리">
+                            <img src="img/ps/티트리.jpg" alt="티트리">
                         </div><!-- .image -->
                         <div class="text_box">
                             <div class="title">
@@ -641,14 +721,14 @@
                             <div class="text">
                                 <p>TOOLS : AdobePhotoshop </p>
                                 <p>기여도 : 기획,디자인100%</p>
-                                <button onclick="openImage('ps/티트리원본.jpg', true)">원본-작업물</button>
+                                <button onclick="openImage('img/ps/티트리원본.jpg', true)">원본-작업물</button>
                             </div><!-- .text -->
                         </div><!-- .text -->
                     </div><!-- .swiper-slide -->
 
                     <div class="swiper-slide">
                         <div class="image">
-                            <img src="ps/신혼부부.gif" alt="신혼부부">
+                            <img src="img/ps/신혼부부.gif" alt="신혼부부">
                         </div><!-- .image -->
                         <div class="text_box">
                             <div class="title">
@@ -657,7 +737,7 @@
                             <div class="text">
                                 <p>TOOLS : AdobePhotoshop </p>
                                 <p>기여도 : 기획,디자인100%</p>
-                                <button onclick="openImage('ps/신혼부부원본.gif', true)">원본-작업물</button>
+                                <button onclick="openImage('img/ps/신혼부부원본.gif', true)">원본-작업물</button>
                             </div><!-- .text -->
                         </div><!-- .text -->
                     </div><!-- .swiper-slide -->
@@ -673,16 +753,32 @@
 
         <div class="footer">
             <div class="inner">
-                <div class="text_box">
-                    <div class="text">
-                        <p>82+ 010.5479.0846</p>
-                        <span>eoakd159@naver.com</span>
-                    </div><!-- .text -->
-                    <div class="text">
-                        <p>@SEUNGJUN.com</p>
-                        <span>BangSeungJun</span>
-                    </div><!-- .text -->
-                </div><!-- .text_box -->
+                <div class="footer-line" id="footer"></div>
+                <div class="text_inner">
+
+                    <div class="text_box">
+                        <div class="text">
+                            <img src="아이콘/전화.png" alt="전화번호">
+                            <p>82+ 010.5479.0846</p>
+                        </div><!-- .text -->
+
+                        <div class="text">
+                            <img src="아이콘/메일.png" alt="메일">
+                            <p>eoakd159@naver.com</p>
+                        </div><!-- .text -->
+
+                        <div class="text">
+                            <img src="아이콘/깃허브.png" alt="깃허브">
+                            <p><a href="https://github.com/SEUNGJUNBANG" target="_blank">Github</a></p>
+                        </div><!-- .text -->
+                    </div><!-- .text_box -->
+
+                    <div class="sub_text">
+                        <span><img src="아이콘/지구본.png" alt="지역"> Based in Busan, South Korea (GMT+9)</span>
+                        <p>© 2025 Bang Seung Jun. Designed & Built by Seung Jun</p>
+                    </div><!-- .sub_text -->
+                </div><!-- .text_inner -->
+
             </div><!-- .inner -->
         </div><!-- .footer -->
     </div><!-- .wrap -->
