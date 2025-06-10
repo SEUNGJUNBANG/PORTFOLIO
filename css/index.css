@@ -94,7 +94,7 @@ body {
 .gnb a {
   font-size: 18px;
   font-weight: 600;
-  color: #111;
+  color: #333;
   padding: 6px 12px;
   transition: color 0.3s, border-bottom 0.3s;
   border-bottom: 2px solid transparent;
@@ -146,7 +146,7 @@ body {
 
 .main {
   background: #eaeaea;
-  height: 100vh;
+  height: 100%;
   padding-top: 80px;
 }
 
@@ -170,7 +170,7 @@ body {
 }
 
 .main .sub_text {
-  padding-top: 150px;
+  padding: 150px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -201,6 +201,7 @@ body {
   text-align: center;
   margin-bottom: 60px;
   position: relative;
+
 }
 
 .profile .title h2::after {
@@ -261,14 +262,14 @@ body {
 }
 
 .box>.image_box .sub_image {
-  background-color: #2b4ff1;
+  background-color: #3f4b55;
   transform: rotateY(180deg);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   font-size: 18px;
-  padding: 50px 20px;
+  padding: 80px 20px;
   z-index: 1;
 }
 
@@ -276,10 +277,18 @@ body {
   height: 100%;
   display: flex;
   gap: 10px;
+  align-items: center;
+  text-align: left;
 }
+
 .box>.image_box .sub_image .text strong {
-  font-size: 20px;
+  font-size: 18px;
   color: #f5f5f5;
+}
+.box>.image_box .sub_image .text p {
+  font-size: 18px;
+  color: #fff;
+  font-weight: 600;
 }
 .box>.image_box:hover .image {
   transform: rotateY(180deg);
@@ -344,7 +353,7 @@ body {
 
 .project {
   background: #eaeaea;
-  padding-bottom: 150px;
+  padding-bottom: 100px;
 }
 
 
@@ -353,17 +362,17 @@ body {
   font-weight: 700;
   text-align: center;
   padding: 60px 0;
-  color: #222;
+  color: #333;
 }
 
 .subswiper {
-  margin-top: 30px;
-  margin-bottom: 150px;
+  margin: 100px 0;
 }
 
 .subswiper,
 .psSwiper {
   height: 900px;
+  transition-timing-function: linear !important;
 }
 
 
@@ -393,7 +402,7 @@ body {
   height: 500px;
   overflow: hidden;
   border-radius: 8px;
-  margin-bottom: 60px;
+  margin-bottom: 50px;
 }
 
 .psSwiper .swiper-slide .image img,
@@ -531,6 +540,14 @@ body {
   background-color: #555;
 }
 
+.text_box .text a .Web {
+  background-color: #2b4ff1;
+  color: #fff;
+}
+
+.text_box .text a .Web:hover {
+  background-color: #6ca5db;
+}
 
 .more-container {
   position: relative;
@@ -575,11 +592,11 @@ body {
   height: 100%;
   white-space: nowrap;
   font-size: 14px;
-  color: #eaeaea;
+  color: #ffffff;
   font-weight: 500;
   padding: 8px 10px;
   border-radius: 5px;
-  background: #2b4ff1;
+  background: #f12b77;
   cursor: pointer;
 }
 
@@ -656,8 +673,16 @@ body {
   object-fit: cover;
 }
 
+#popupImg.site {
+  width: 100% !important;
+  max-width: none;
+  height: auto;
+  display: block;
+}
+
+
 .sub_image {
-  width: 500px;
+  width: 100%;
   display: none;
   position: fixed;
   top: 50%;
@@ -665,7 +690,6 @@ body {
   transform: translate(-50%, -50%);
   overflow: auto;
   z-index: 9999;
-  max-width: 100%;
   max-height: 100%;
   background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.5);
@@ -677,7 +701,7 @@ body {
 .sub_image img {
   display: block;
   margin: 0 auto;
-  max-width: 100%;
+  width: 100%;
   height: auto;
   object-fit: cover;
 }
@@ -686,7 +710,27 @@ body {
   height: 100%;
 }
 
+#popupImg.size1 {
+  width: 500px;
+}
 
+#popupImg.size2 {
+  width: 800px;
+}
+
+.sub_image #closePopup {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  font-size: 48px;
+  padding: 4px 10px;
+  color: #333;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  z-index: 999;
+}
 
 .footer .inner {
   background: #fff;
